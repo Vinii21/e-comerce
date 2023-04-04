@@ -37,3 +37,25 @@
       transform: rotate(1800deg);
     }
   }
+
+  /* loguin */
+
+.login {
+
+  display: grid;
+ 
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.form-login {
+  width: 50vw;
+  
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--color-form-login);
+}
+
+/* fin  del login */

@@ -10,8 +10,8 @@ const NavBar = () => {
             <Navbar.Brand as={ Link } to="/">Products App</Navbar.Brand>
             <Nav className="me-auto">
                 <Nav.Link as={ Link } to="/login">Login</Nav.Link>
-                <Nav.Link as={ Link } to="/pursheices">Pursheices</Nav.Link>
-                <Nav.Link>Pursheices (sideBar)</Nav.Link>
+                <Nav.Link as={ Link } to="/purchases">Purchases</Nav.Link>
+                <Nav.Link>Purchases (sideBar)</Nav.Link>
             </Nav>
             </Container>
         </Navbar>

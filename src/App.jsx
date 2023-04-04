@@ -4,7 +4,7 @@ import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import ProductDetail from "./pages/ProductDetail"
 import Login from "./pages/Login"
-import Pursheices from './pages/Pursheices';
+import Purchases from './pages/Purchases';
 import Loader from "./components/Loader"
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/pursheices" element={<Pursheices />} />
+        <Route path="/purchases" element={<Purchases />} />
       </Routes>
     </HashRouter>
   );

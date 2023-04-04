@@ -1,4 +1,4 @@
-const Pursheices = () => {
+const Purchases = () => {
     return (
         <div>
             Historial, pursheices
@@ -6,4 +6,4 @@ const Pursheices = () => {
     );
 }
  
-export default Pursheices;
+export default Purchases;

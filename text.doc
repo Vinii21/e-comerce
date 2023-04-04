@@ -1,0 +1,37 @@
+Vamos a estar ocupando https://bootswatch.com/ que son temas, que a la hora de usarlo con React Boostrap se verá con un tema 
+distinto. Para no tener proyectos que se parescan tanto entre si.
+
+#1 Instalamos todo lo necesarios
+npm i axios (peticiones API)
+npm i react-hook-form (Manejo formularios)
+npm i react-router-dom (Errutamiento)
+npm i @reduxjs/toolkit react-redux (Estados globales)
+npm i react-bootstrap bootstrap ( Estilos css )
+npm i bootswatch ( tema estilo )
+
+#2 Siguientes configuraciones, corre el proyectos
+--Crear carpetas
+src
+    components
+    pages
+    store
+        index.jsx
+        slices
+
+--Código necesarios
+    redux
+       Mira esto aqui https://solid-wandflower-98c.notion.site/Redux-b78d51a5643e441084fab89609a86927 Estan los pasos necesarios. 
+    Router Dom
+        Las configuraciones en este caso se hacen en el componente App.jsx
+        Mira esto https://solid-wandflower-98c.notion.site/React-Router-Dom-b0bd0edbd2d94f89b112c79b5c9c9e16 
+    Boostrap
+        Debemos importar en componente main.jsx, que es el archivo (no el componente) más externo
+        import "bootswatch/dist/[theme]/bootstrap.min.css";
+        Sustituye [theme] por el tema que quieras, revisar https://bootswatch.com/ para saber que temas hay 
+    
+#3 Elimina los css que vienen por defecto en app.css e index.css. Coloca el operador universal en app.css con lo necesario para 
+resetear todo.
+
+#4 Crea las rutas necesarias en la carpeta pages para hacer las rutas en el App.jsx
+
+

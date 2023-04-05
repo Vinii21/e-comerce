@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsThunk,
   filterCategoriesThunk,
-  filterHeadLineThunk
+  filterHeadLineThunk,
 } from "../store/slices/products.slice";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -20,7 +20,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProductsThunk())
+    dispatch(getProductsThunk());
   }, []);
 
   const [inputValue, setInputValue] = useState("");
@@ -33,7 +33,7 @@ const Home = () => {
         <Filters />
       </aside>
 
-      <Container>
+      <Container className="py-1 ">
         <Row>
           <Col>
             <InputGroup className="mb-3">
@@ -55,29 +55,36 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Row xs={1} md={2} lg={3} className="py-1">
+        <Row xs={1} md={2} lg={3}  className="py-1 ">
           {products.map((product) => {
             return (
-              <Col key={product?.id} className="my-1">
-                <Card style={{ width: "18rem" }}>
+              <Col key={product?.id} className="my-1 colCard">
+                <Card
+                  className="CardProduct"
+                  as={Link}
+                  to={`/product/${product.id}`}
+                  style={{ width: "100%", height: "400px" }}
+                >
                   <Card.Img
                     variant="top"
-                    style={{ height: "200", objectFit: "cover" }}
+                    style={{ height: "200px", objectFit: "contain" }}
                     src={product.images?.[0].url}
                   />
                   <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
                     <Card.Text>{product?.price}</Card.Text>
                     <Card.Text>{product?.brand}</Card.Text>
-                    <Button
-                      as={Link}
-                      to={`/product/${product.id}`}
-                      variant="primary"
-                    >
-                      Go somewhere
-                    </Button>
                   </Card.Body>
                 </Card>
+                <Button
+                    onClick={() => {
+                      console.log("hola");
+                    }}
+                    className="btnBuy"
+                    variant="primary"
+                  >
+                    <i className='bx bx-cart-add'></i>
+                  </Button>
               </Col>
             );
           })}

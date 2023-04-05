@@ -15,14 +15,14 @@ const ProductDetail = () => {
 
   const dispatch = useDispatch();
 
-  const products = useSelector(state => state.products);
+  const products = useSelector((state) => state.products);
 
   useEffect(() => {
     axios
       .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/${id}`)
       .then((resp) => {
         setProduct(resp.data);
-        dispatch(filterDetailThunk(resp.data?.category?.id, id))
+        dispatch(filterDetailThunk(resp.data?.category?.id, id));
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -52,7 +52,11 @@ const ProductDetail = () => {
         {products.map((product) => {
           return (
             <Col key={product?.id} className="my-1">
-              <Card style={{ width: "18rem" }}>
+              <Card
+                as={Link}
+                to={`/product/${product.id}`}
+                style={{ width: "18rem" }}
+              >
                 <Card.Img
                   variant="top"
                   style={{ height: "200", objectFit: "cover" }}
@@ -62,13 +66,7 @@ const ProductDetail = () => {
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text>{product?.price}</Card.Text>
                   <Card.Text>{product?.brand}</Card.Text>
-                  <Button
-                    as={Link}
-                    to={`/product/${product.id}`}
-                    variant="primary"
-                  >
-                    Go somewhere
-                  </Button>
+                  <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
               </Card>
             </Col>

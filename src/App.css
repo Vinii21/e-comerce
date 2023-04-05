@@ -56,3 +56,27 @@
     padding: 1rem;
     border: 1px solid var(--color-form-login);
   }
+
+  /* card de productos */
+  .CardProduct{
+   
+    z-index: 1;
+  }
+
+  .colCard{
+     position: relative; 
+    
+     width: 18rem;
+     
+     height: 400px;
+  }
+
+  .btnBuy{
+    /* position: absolute;
+    bottom:  2rem; */
+    position: absolute;
+    right: 50px;
+    bottom: 2rem;
+    z-index: 2;
+  } 
+

@@ -3,7 +3,9 @@
   margin: 0;
   padding: 0;
 }
-
+:root{
+  --color-form-login: black;
+}
 body{
   overflow-x: hidden;
 }

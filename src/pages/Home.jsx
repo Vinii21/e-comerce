@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsThunk,
   filterCategoriesThunk,
-  filterHeadLineThunk,
+  filterHeadLineThunk
 } from "../store/slices/products.slice";
 import { useEffect, useState } from "react";
 import axios from "axios";

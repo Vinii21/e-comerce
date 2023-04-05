@@ -7,49 +7,25 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  getProductsThunk,
-  filterCategoriesThunk,
-  filterHeadLineThunk,
-} from "../store/slices/products.slice";
+import { filterDetailThunk } from "../store/slices/products.slice";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const [filter, setFilter] = useState(null);
 
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.products);
-
-  // let productFilter = products?.filter((product) => {
-  //   product.id !== id;
-
-  // });
-
-  const productFilter = (n) => {
-    let result = n?.filter((product) => {
-      product.id !== id;
-    });
-    setFilter(result)
-    console.log(result)
-  };
-
-
+  const products = useSelector(state => state.products);
 
   useEffect(() => {
-    
     axios
       .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/${id}`)
       .then((resp) => {
         setProduct(resp.data);
-        dispatch(filterCategoriesThunk(resp.data?.category?.id));
-        productFilter()
+        dispatch(filterDetailThunk(resp.data?.category?.id, id))
       })
       .catch((error) => console.log(error));
   }, [id]);
-
-  // console.log(productFilter)
 
   return (
     <>

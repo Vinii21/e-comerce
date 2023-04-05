@@ -9,12 +9,15 @@ import axios from "axios";
 import {
   getProductsThunk,
   filterCategoriesThunk,
+  filterPriceThunk
 } from "../store/slices/products.slice";
 import { useDispatch } from "react-redux";
 
 export default function Filters() {
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
+  const [min, setMin] = useState("")  
+  const [max, setMax] = useState("")
 
   useEffect(() => {
     axios
@@ -22,6 +25,7 @@ export default function Filters() {
       .then((resp) => setCategories(resp.data))
       .catch((error) => console.error(error));
   }, []);
+  
   return (
     <div>
       <Container>
@@ -52,13 +56,17 @@ export default function Filters() {
             <Form>
               <Col>
                 <label htmlFor="">From</label>
-                <input></input>
+                <input type="number" placeholder="Min" min="0" value={min} onChange={(e) => setMin(e.target.value)}/>
               </Col>
               <Col>
                 <label htmlFor="">To</label>
-                <input></input>
+                <input type="number" placeholder="Max" min="0" value={max} onChange={(e) => setMax(e.target.value)}/>
               </Col>
-              <Button>Filter Price</Button>
+              <Button onClick={()=>{ 
+                dispatch(filterPriceThunk(min, max))
+                setMin("")
+                setMax("")
+              }}>Filter Price</Button>
             </Form>
           </Col>
         </Row>

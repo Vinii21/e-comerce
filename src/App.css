@@ -1,7 +1,6 @@
 /* CSS LOADER */
 .lds-hourglass {
     display: inline-block;
-    position: relative;
     width: 100%;
     height: 100vh;
     background-color: rgba(80, 89, 90, 0.645);
@@ -37,6 +36,17 @@
       transform: rotate(1800deg);
     }
   }
+
+/* CARD CSS */
+
+.card__container{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  background-color: #eda820;
+  transition: 1s all ease-in-out;
+}
 
 
 

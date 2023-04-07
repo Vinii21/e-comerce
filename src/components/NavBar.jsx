@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <>
       <Card showCard={showCard} setShowCard={setShowCard}/>
-      <Navbar expand="lg" bg="dark" variant="dark" className="fixed-top">
+      <Navbar expand="lg" bg="dark" variant="dark" className="fixed-top nav">
         <Container>
           <Navbar.Brand as={Link} to="/">
             Products App
@@ -25,7 +25,7 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/purchases">
                 Purchases
               </Nav.Link>
-              <Nav.Link onClick={()=>setShowCard(true)}>Purchases (sideBar)</Nav.Link>
+              <Nav.Link onClick={()=>setShowCard(!showCard)}>Purchases (sideBar)</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

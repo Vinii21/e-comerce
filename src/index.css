@@ -3,7 +3,21 @@
   margin: 0;
   padding: 0;
 }
+:root{
+  --color-form-login: black;
+}
 
 body{
+  position: relative;
   overflow-x: hidden;
+  padding-bottom: 200px;
 }
+
+/* Para remover las flechas en el input type number, sirve en Chrome y Firebox */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield; }

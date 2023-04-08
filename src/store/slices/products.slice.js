@@ -40,6 +40,30 @@ export const filterHeadLineThunk = valueInput => dispatch => {
     .finally(()=>dispatch(setIsLoading(false)))
 }
 
+export const filterDetailThunk = (categoryId, productId) => dispatch => {
+    dispatch(setIsLoading(true))
+    
+    axios.get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${categoryId}`)
+    .then(resp=>{
+        let result = resp?.data?.filter( p => p.id !== parseInt(productId) )
+        dispatch(setProducts(result))
+    })
+    .catch(error=>console.log(error))
+    .finally(()=>dispatch(setIsLoading(false)))
+}
+
+export const filterPriceThunk = (min, max) => dispatch => {
+    dispatch(setIsLoading(true))
+
+    axios.get("https://e-commerce-api-v2.academlo.tech/api/v1/products")
+    .then( resp => {
+        let result = resp?.data?.filter(p => p.price >= parseInt(min) && p.price <= parseInt(max))
+        dispatch(setProducts(result))
+    })
+    .catch(error=>console.error(error))
+    .finally(()=>dispatch(setIsLoading(false)))
+}
+
 export const { setProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;

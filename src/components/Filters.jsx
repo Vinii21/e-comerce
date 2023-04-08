@@ -23,31 +23,10 @@ export default function Filters() {
       .catch((error) => console.error(error));
   }, []);
   return (
-    <div>
-      <Container>
-        <Row>
-          {categories.map((category) => (
-            <Col key={category.id}>
-              <Button
-                onClick={() => dispatch(filterCategoriesThunk(category.id))}
-              >
-                {category.name}
-              </Button>
-            </Col>
-          ))}
-          <Col>
-            <Button
-              onClick={() => dispatch(getProductsThunk())}
-              className="w-100"
-            >
-              All
-            </Button>
-          </Col>
-        </Row>
-
-        <Row className="py-3"></Row>
-        <Row>
-          <h1>Price</h1>
+    <aside>
+      <Container className="w-100">
+      <Row className="aside-price">
+          <h3>Price</h3>
           <Col>
             <Form>
               <Col>
@@ -62,7 +41,28 @@ export default function Filters() {
             </Form>
           </Col>
         </Row>
+
+<Row className="py-3 aside-categories" >
+      <h3>Categories</h3>
+          {categories.map((category) => (
+            <Row key={category.id}>
+              <Button
+                onClick={() => dispatch(filterCategoriesThunk(category.id))}
+              >
+                {category.name}
+              </Button>
+            </Row>
+          ))}
+          <Row>
+            <Button
+              onClick={() => dispatch(getProductsThunk())}
+              className="w-100"
+            >
+              All
+            </Button>
+          </Row>
+          </Row>        
       </Container>
-    </div>
+    </aside>
   );
 }

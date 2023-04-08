@@ -56,3 +56,19 @@
     padding: 1rem;
     border: 1px solid var(--color-form-login);
   }
+
+  /*aside filter*/
+
+  aside{
+    float:left;
+    overflow: hidden;
+    width: 20vw;
+  }
+
+  .aside-price{
+    padding-top: 1rem;
+  }
+
+  .aside-categories{
+    padding-top: 1rem;
+  }

@@ -63,7 +63,7 @@ const ProductDetail = () => {
               >
                 <Card.Img
                   variant="top"
-                  style={{ height: "200", objectFit: "cover" }}
+                  style={{ width: "auto", height: "190px" }}
                   src={product.images?.[0].url}
                 />
                 <Card.Body>

@@ -66,8 +66,9 @@ const Home = () => {
                   style={{ width: "100%", height: "400px" }}
                 >
                   <Card.Img
+                  className="m-1"
                     variant="top"
-                    style={{ height: "200px", objectFit: "contain" }}
+                    style={{ width: "auto", height: "190px", objectFit: "contain" }}
                     src={product.images?.[0].url}
                   />
                   <Card.Body>

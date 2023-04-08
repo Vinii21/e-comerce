@@ -7,8 +7,8 @@ const Card = ({showCard, setShowCard}) => {
             </div>
             <ul className="card__products">
                 <li>
-                    <div className="info__product-container">
-                        <img src="/esta.jpeg" alt="producto"/>
+                    <div className="info__product-container ">
+                        <img src="/esta.jpeg" alt="producto" style={{ width: "auto", height: "190px" }} className="m-1"/>
                         <div className="input__group">
                             <h3>Celular samsung</h3>
                             <div>

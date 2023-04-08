@@ -243,8 +243,8 @@
   /*Detailt product*/
 
   .container-detailt{
-    margin-top: 5rem;
-    position: absolute;
+    padding-top: 100px;
+    min-height: 100vh;
   }
 
   /* Footer */

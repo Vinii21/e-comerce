@@ -12,7 +12,7 @@ const Login = () => {
             <Form.Control type="email" placeholder="Enter email" />
            
           </Form.Group>
-
+          {/* Este es el cambio */}
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />

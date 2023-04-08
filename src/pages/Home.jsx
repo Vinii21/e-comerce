@@ -9,15 +9,17 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsThunk,
   filterCategoriesThunk,
-  filterHeadLineThunk,
+  filterHeadLineThunk
 } from "../store/slices/products.slice";
+import { addCarThunk } from "../store/slices/car.slice";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 
 const Home = () => {
   const dispatch = useDispatch();
+
+  const token = useSelector(state => state.token)
 
   useEffect(() => {
     dispatch(getProductsThunk());
@@ -78,7 +80,7 @@ const Home = () => {
                 </Card>
                 <Button
                     onClick={() => {
-                      console.log("hola");
+                     dispatch(addCarThunk( token, {quantity: 1, productId: product?.id}));
                     }}
                     className="btnBuy"
                     variant="primary"

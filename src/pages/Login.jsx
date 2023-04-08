@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setToken } from "../store/slices/token.slice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
+  const navigate = useNavigate()
 
   const onSumit = (e) => {
     e.preventDefault();
@@ -21,6 +24,7 @@ const Login = () => {
         dispatch(setToken(resp.data));
         setEmail("");
         setPass("");
+        navigate("/")
       })
       .catch((error) => {
         Swal.fire({

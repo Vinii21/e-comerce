@@ -1,4 +1,5 @@
-const Card = ({showCard, setShowCard}) => {
+const Car = ({showCard, setShowCard}) => {
+
     return (
         <div className="card__container" style={showCard ? {right: "0px", opacity: "1", zIndex:"101"} : {right: "-300px", opacity:"0", zIndex:"-1"}}>
             <div className="card__close">
@@ -31,4 +32,4 @@ const Card = ({showCard, setShowCard}) => {
     );
 }
  
-export default Card;
+export default Car;

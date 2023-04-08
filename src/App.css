@@ -157,3 +157,46 @@
     z-index: 2;
   } 
 
+  /*purchases */
+
+   .container-purchases{
+    margin-top: 100px;
+    position: absolute;
+  } 
+
+  .table-purchases{
+    margin: 1rem;
+    margin-right: 1rem;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+
+  /*backHome*/
+
+  .backHome{
+    display: flex;
+    margin: 1rem;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .circule{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+  }
+
+
+  /*Detailt product*/
+
+  .container-detailt{
+    margin-top: 5rem;
+    position: absolute;
+  }
+
+ 
+  
+

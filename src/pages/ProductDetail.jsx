@@ -8,6 +8,8 @@ import Card from "react-bootstrap/Card";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterDetailThunk } from "../store/slices/products.slice";
+import BackHome from "../components/BackHome";
+
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -28,8 +30,10 @@ const ProductDetail = () => {
   }, [id]);
 
   return (
-    <>
-      <Row>
+    <div className="container-detailt">
+     
+      <Row>  
+      <BackHome page={product.title} />
         <Col className="my-1">
           <Card style={{ width: "18rem" }}>
             <Card.Img
@@ -73,7 +77,7 @@ const ProductDetail = () => {
           );
         })}
       </Row>
-    </>
+    </div>
   );
 };
 

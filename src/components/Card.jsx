@@ -12,7 +12,7 @@ const Card = ({showCard, setShowCard}) => {
                         <div className="input__group">
                             <h3>Nombre</h3>
                             <div>
-                                <button>-</button><input type="number" /><button>+</button>
+                                <button>-</button><input type="number" min="0"/><button>+</button>
                             </div>
                         </div>
                         <i className='bx bxs-trash'></i>

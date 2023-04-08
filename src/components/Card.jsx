@@ -6,11 +6,11 @@ const Card = ({showCard, setShowCard}) => {
                 <i onClick={()=>setShowCard(!showCard)} className='bx bxs-x-circle'></i>
             </div>
             <ul className="card__products">
-                <li >
+                <li>
                     <div className="info__product-container">
-                        <img src="/esta.jpeg" alt="producto" width="50"/>
+                        <img src="/esta.jpeg" alt="producto"/>
                         <div className="input__group">
-                            <h3>Nombre</h3>
+                            <h3>Celular samsung</h3>
                             <div>
                                 <button>-</button><input type="number" min="0"/><button>+</button>
                             </div>

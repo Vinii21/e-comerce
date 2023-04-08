@@ -28,7 +28,7 @@ const Home = () => {
   const products = useSelector((state) => state.products);
 
   return (
-    <div>
+    <div className="home">
       <aside>
         <Filters />
       </aside>

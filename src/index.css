@@ -8,7 +8,9 @@
 }
 
 body{
+  position: relative;
   overflow-x: hidden;
+  padding-bottom: 200px;
 }
 
 /* Para remover las flechas en el input type number, sirve en Chrome y Firebox */

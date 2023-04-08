@@ -7,6 +7,7 @@ import Login from "./pages/Login"
 import Purchases from './pages/Purchases';
 import Loader from "./components/Loader"
 import { useSelector } from 'react-redux';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -14,16 +15,17 @@ function App() {
 
   return (
     <HashRouter>
-      {
-        isLoading && <Loader />
-      }
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/purchases" element={<Purchases />} />
-      </Routes>
+          {
+            isLoading && <Loader />
+          }
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/purchases" element={<Purchases />} />
+          </Routes>
+        <Footer />
     </HashRouter>
   );
 }

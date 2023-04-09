@@ -37,12 +37,11 @@
   }
 }
 
-/* Home */
+/****input home****/
 
-/* .home{
-padding-bottom: 200px;
-background-color: #eda820;
-} */
+.input__home{
+  margin-top: 100px;
+}
 
 /* CARD CSS */
 
@@ -195,8 +194,6 @@ background-color: rgb(45, 47, 45);
 }
 
 .btnBuy{
-  /* position: absolute;
-  bottom:  2rem; */
   position: absolute;
   right: 50px;
   bottom: 2rem;
@@ -257,3 +254,14 @@ footer{
   bottom: 0;
 }
 
+/****aside****/
+
+.aside__home{
+  float: left;
+  width: 200px;
+  position:static;
+}
+
+.categories__aside{
+  width: 800px;
+}

@@ -4,9 +4,9 @@ import Form from "react-bootstrap/Form";
 
 const Login = () => {
     return (
-        <div className="login">
+        <div className="login m-3">
         <Form className="form-login" >
-          <h1>Bien venido a la tienda </h1>
+          <h1>Bienvenido a la tienda </h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />

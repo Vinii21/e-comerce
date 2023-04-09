@@ -33,7 +33,7 @@ const ProductDetail = () => {
   return (
     <Container className="mt-5 pt-5 container__detail">
       <BackHome page={product.title} />
-      <Row>
+      <Row className="pt-5">
         <Col>
           <Carousel>
             <Carousel.Item>
@@ -64,32 +64,42 @@ const ProductDetail = () => {
           <Card.Title className="px-3 py-1">{product.title}</Card.Title>
           <Card.Title className="py-2">{product.description}</Card.Title>
           <Card.Text className="py-2">$ {product?.price}</Card.Text>
-          <Button variant="primary">Add to card</Button>
+          <Button variant="primary">
+            Add to card <i className="bx bx-cart p-3"></i>
+          </Button>
         </Col>
       </Row>
-
-      
-
       <h2 className="mt-5 pt-5">Recomendados</h2>
-      <Row xs={1} md={2} lg={3} className="py-1">
+
+      <Row xs={1} md={2} lg={3} className="py-1 justify-content-md-center">
         {products.map((product) => {
           return (
-            <Col key={product?.id} className="my-1">
+            <Col key={product?.id} className="my-1 " >
               <Card
                 as={Link}
                 to={`/product/${product.id}`}
-                style={{ width: "18rem" }}
+                style={{ width: "18rem", height: "30rem" }}
               >
                 <Card.Img
                   variant="top"
-                  style={{ width: "auto", height: "190px" }}
                   src={product.images?.[0].url}
+                  style={{height: "200px" }}
+                  className="my-3 mx-auto"
                 />
                 <Card.Body>
                   <Card.Title>{product.title}</Card.Title>
-                  <Card.Text>{product?.price}</Card.Text>
+                  <Card.Text>$ {product?.price}</Card.Text>
                   <Card.Text>{product?.brand}</Card.Text>
+                  <Container fluid>
+                  <Row className="text-center">
+                    <Col xs={9}>
                   <Button variant="primary">Go somewhere</Button>
+                    </Col>
+                    <Col xs={3}>
+                  <Button variant="primary"><i className="bx bx-cart"></i> </Button>
+                    </Col>
+                  </Row>
+                  </Container>
                 </Card.Body>
               </Card>
             </Col>

@@ -37,11 +37,15 @@ export default function Filters() {
                 <label htmlFor="">From</label>
                 <input type="number" placeholder="Min" min="0" value={min} onChange={(e) => setMin(e.target.value)}/>
               </Col>
-              <Col>
+              <Col
+              className="mt-3"
+              >
                 <label htmlFor="">To</label>
                 <input type="number" placeholder="Max" min="0" value={max} onChange={(e) => setMax(e.target.value)}/>
               </Col>
-              <Button onClick={()=>{ 
+              <Button 
+              className="mt-3"
+              onClick={()=>{ 
                 dispatch(filterPriceThunk(min, max))
                 setMin("")
                 setMax("")
@@ -53,8 +57,8 @@ export default function Filters() {
 <Row className="py-3 aside-categories" >
       <h3>Categories</h3>
           {categories.map((category) => (
-            <Row key={category.id}>
-              <Button
+            <Row key={category.id} className="categories__aside"> 
+              <Button className="btn__aside"
                 onClick={() => dispatch(filterCategoriesThunk(category.id))}
               >
                 {category.name}

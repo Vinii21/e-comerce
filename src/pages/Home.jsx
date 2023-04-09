@@ -29,11 +29,10 @@ const Home = () => {
 
   return (
     <div className="home">
-      <aside>
+      <aside className="aside__home">
         <Filters />
       </aside>
-
-      <Container className="py-1 ">
+      <Container className="py-1 input__home">
         <Row>
           <Col>
             <InputGroup className="mb-3">
@@ -54,8 +53,7 @@ const Home = () => {
             </InputGroup>
           </Col>
         </Row>
-
-        <Row xs={1} md={2} lg={3}  className="py-1 ">
+        <Row xs={1} md={2} lg={3} className="py-1 ">
           {products.map((product) => {
             return (
               <Col key={product?.id} className="my-1 colCard">
@@ -66,26 +64,30 @@ const Home = () => {
                   style={{ width: "100%", height: "400px" }}
                 >
                   <Card.Img
-                  className="m-1"
+                    className="m-1"
                     variant="top"
-                    style={{ width: "auto", height: "190px", objectFit: "contain" }}
+                    style={{
+                      width: "auto",
+                      height: "190px",
+                      objectFit: "contain",
+                    }}
                     src={product.images?.[0].url}
                   />
                   <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>{product?.price}</Card.Text>
+                    <Card.Text>$ {product?.price}</Card.Text>
                     <Card.Text>{product?.brand}</Card.Text>
                   </Card.Body>
                 </Card>
                 <Button
-                    onClick={() => {
-                      console.log("hola");
-                    }}
-                    className="btnBuy"
-                    variant="primary"
-                  >
-                    <i className='bx bx-cart-add'></i>
-                  </Button>
+                  onClick={() => {
+                    console.log("hola");
+                  }}
+                  className="btnBuy "
+                  variant="primary"
+                >
+                  <i className="bx bx-cart-add"></i>
+                </Button>
               </Col>
             );
           })}

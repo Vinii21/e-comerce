@@ -11,23 +11,32 @@ import {
   filterCategoriesThunk,
   filterHeadLineThunk
 } from "../store/slices/products.slice";
-import { addCarThunk } from "../store/slices/car.slice";
+import { addCarThunk, getCarThunk } from "../store/slices/car.slice";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
+
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const token = useSelector(state => state.token)
+  const cars = useSelector((state) => state.car);
 
   useEffect(() => {
     dispatch(getProductsThunk());
+    if(token){
+      dispatch(getCarThunk(token));
+    }
   }, []);
 
   const [inputValue, setInputValue] = useState("");
 
   const products = useSelector((state) => state.products);
+
+  const addCar =() =>{
+    cars
+  }
 
   return (
     <div className="home">

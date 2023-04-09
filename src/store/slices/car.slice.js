@@ -13,8 +13,19 @@ export const carSlice = createSlice({
     }
 })
 
-export const { setCar } = carSlice.actions;
 
+
+export const getCarThunk =(tokenData) => dispatch =>{
+    dispatch(setIsLoading(true))
+    
+    axios.get( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, { headers: { Authorization: `Bearer ${tokenData.token}` } } )
+    .then((resp)=>{
+        dispatch(setCar(resp.data))
+        console.log('entro a them getCar'+resp.data)
+    })
+    .catch(error=>console.log(error))
+    .finally(()=>dispatch(setIsLoading(false)))
+}
 
 export const addCarThunk = (data, product) => dispatch => {
     dispatch(setIsLoading(true))
@@ -26,5 +37,18 @@ export const addCarThunk = (data, product) => dispatch => {
     .catch(error=>console.log(error))
     .finally(()=>dispatch(setIsLoading(false)))
 }
+
+export const deleteCarThunk = (dataToken,idCarProduct) =>dispatch =>{
+    dispatch(setIsLoading(true))
+    
+    axios.delete( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`,{ headers: { Authorization: `Bearer ${dataToken.token}` } } )
+    .then(()=>{
+        console.log(idCarProduct)
+    })
+    .catch(error=>console.log(error))
+    .finally(()=>dispatch(setIsLoading(false)))
+}
+
+export const { setCar } = carSlice.actions;
 
 export default carSlice.reducer;

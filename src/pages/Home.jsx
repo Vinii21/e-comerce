@@ -28,7 +28,7 @@ const Home = () => {
     if(token){
       dispatch(getCarThunk(token));
     }
-  }, []);
+  }, [cars]);
 
   const [inputValue, setInputValue] = useState("");
 

@@ -6,16 +6,15 @@ import { useEffect, useState } from "react";
 const Car = ({ showCard, setShowCard }) => {
   const token = useSelector((state) => state.token);
   const cars = useSelector((state) => state.car);
-  console.log(cars)
   const dispatch = useDispatch();
   const [productCars, setProductCars] = useState([]);
 
-   useEffect(() => {
-    if(token){
-      getCar()
-    }
+  //  useEffect(() => {
+  //   if(token){
+  //     getCar()
+  //   }
    
-   }, [Car]);
+  //  }, [Car]);
 
   const getCar = () => {
     dispatch(getCarThunk(token));
@@ -73,7 +72,7 @@ const Car = ({ showCard, setShowCard }) => {
           </span>
           <span>$00.0</span>
         </div>
-        <button onClick={getCar}>Checkout</button>
+        <button>Checkout</button>
       </div>
     </div>
   );

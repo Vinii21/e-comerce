@@ -7,22 +7,10 @@ const Car = ({ showCard, setShowCard }) => {
   const token = useSelector((state) => state.token);
   const cars = useSelector((state) => state.car);
   const dispatch = useDispatch();
-  const [productCars, setProductCars] = useState([]);
-
-  //  useEffect(() => {
-  //   if(token){
-  //     getCar()
-  //   }
-   
-  //  }, [Car]);
-
-  const getCar = () => {
-    dispatch(getCarThunk(token));
-  };
 
   const deletCart =(id)=>{
     dispatch(deleteCarThunk(token,id))
-    getCar()
+    dispatch(getCarThunk(token));
   }
 
   return (
@@ -51,7 +39,7 @@ const Car = ({ showCard, setShowCard }) => {
                   <h3>{car.product?.title}</h3>
                   <div>
                     <button>-</button>
-                    <input type="number" min="0"  defaultValue={Number( car.quantity)} />
+                    <input type="number" min="0"  value={Number( car.quantity)} />
                     <button>+</button>
                   </div>
                 </div>

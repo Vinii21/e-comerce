@@ -52,12 +52,11 @@ export const deleteCarThunk = (dataToken,idCarProduct) =>dispatch =>{
 
 export const updateCarThunk =(dataToken,idCarProduct,quantity) =>dispatch=>{
     dispatch(setIsLoading(true))
-    console.log(quantity.quantity)
     axios.put( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`, quantity,{ headers: { Authorization: `Bearer ${dataToken.token}` } } )
     .then(()=>{
-         console.log(idCarProduct)
+        Swal.fire('Actualizado en el Carrito')
     })
-    .catch(error=>console.log(error))
+    .catch(error=>console.error(error))
     .finally(()=>dispatch(setIsLoading(false)))
 }
 

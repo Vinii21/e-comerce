@@ -38,16 +38,13 @@ const Home = () => {
   const products = useSelector((state) => state.products);
 
   const addCar = (idProduct) => {
-    // console.log(cars[0].product.id);
-    // console.log(cars)
+    console.log("car al ENTRAR a la funcion", cars)
     if(cars.length === 0){
-      console.log('condicion cumplida'+cars)
       dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
     }else{
-      console.log("else"+cars)
      for (const car of cars) {
-      if(car.product?.id ===idProduct){
-        dispatch(updateCarThunk(token,idProduct,{ quantity:2}))
+      if(car?.product?.id === idProduct){
+        dispatch(updateCarThunk(token,car?.id,{ quantity: 2 }))
       }else{
         dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
       }
@@ -114,15 +111,6 @@ const Home = () => {
                 >
                   <i className="bx bx-cart-add"></i>
                 </Button>
-                {/* <Button
-                    onClick={() => {
-                     dispatch(addCarThunk( token, {quantity: 1, productId: product?.id}));
-                    }}
-                    className="btnBuy"
-                    variant="primary"
-                  >
-                    <i className='bx bx-cart-add'></i>
-                  </Button>  */}
               </Col>
             );
           })}

@@ -51,12 +51,11 @@ const Car = ({ showCard, setShowCard }) => {
                   <h3>{car.product?.title}</h3>
                   <div>
                     <button>-</button>
-                    <input type="number" min="0" />
+                    <input type="number" min="0"  defaultValue={Number( car.quantity)} />
                     <button>+</button>
                   </div>
                 </div>
-                <button onClick={() =>deletCart(car.id)}><i className="bx bxs-trash"></i></button>
-                
+                <i onClick={() =>deletCart(car.id)} className="bx bxs-trash"></i>  
               </div>
               <p>
                 <strong>Total:</strong> {car.product?.price}

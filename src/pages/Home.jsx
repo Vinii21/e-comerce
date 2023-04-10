@@ -9,23 +9,26 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsThunk,
   filterCategoriesThunk,
-  filterHeadLineThunk
+  filterHeadLineThunk,
 } from "../store/slices/products.slice";
-import { addCarThunk, getCarThunk } from "../store/slices/car.slice";
+import {
+  addCarThunk,
+  getCarThunk,
+  updateCarThunk,
+} from "../store/slices/car.slice";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 
-
 const Home = () => {
   const dispatch = useDispatch();
 
-  const token = useSelector(state => state.token)
+  const token = useSelector((state) => state.token);
   const cars = useSelector((state) => state.car);
 
   useEffect(() => {
     dispatch(getProductsThunk());
-    if(token){
+    if (token) {
       dispatch(getCarThunk(token));
     }
   }, [cars]);
@@ -34,9 +37,24 @@ const Home = () => {
 
   const products = useSelector((state) => state.products);
 
-  const addCar =() =>{
-    cars
-  }
+  const addCar = (idProduct) => {
+    // console.log(cars[0].product.id);
+    // console.log(cars)
+    if(cars.length === 0){
+      console.log('condicion cumplida'+cars)
+      dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
+    }else{
+      console.log("else"+cars)
+     for (const car of cars) {
+      if(car.product?.id ===idProduct){
+        dispatch(updateCarThunk(token,idProduct,{ quantity:2}))
+      }else{
+        dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
+      }
+     }
+    }
+    
+  };
 
   return (
     <div className="home">
@@ -66,7 +84,7 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Row xs={1} md={2} lg={3}  className="py-1 ">
+        <Row xs={1} md={2} lg={3} className="py-1 ">
           {products.map((product) => {
             return (
               <Col key={product?.id} className="my-1 colCard">
@@ -88,6 +106,15 @@ const Home = () => {
                   </Card.Body>
                 </Card>
                 <Button
+                  onClick={() => {
+                    addCar(product?.id);
+                  }}
+                  className="btnBuy"
+                  variant="primary"
+                >
+                  <i className="bx bx-cart-add"></i>
+                </Button>
+                {/* <Button
                     onClick={() => {
                      dispatch(addCarThunk( token, {quantity: 1, productId: product?.id}));
                     }}
@@ -95,7 +122,7 @@ const Home = () => {
                     variant="primary"
                   >
                     <i className='bx bx-cart-add'></i>
-                  </Button>
+                  </Button>  */}
               </Col>
             );
           })}

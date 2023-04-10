@@ -32,6 +32,7 @@ export const addCarThunk = (data, product) => dispatch => {
     
     axios.post( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, product, { headers: { Authorization: `Bearer ${data.token}` } } )
     .then(()=>{
+        Swal.fire('Agregado al Carrito')
         // console.log(product)
     })
     .catch(error=>console.log(error))
@@ -44,6 +45,17 @@ export const deleteCarThunk = (dataToken,idCarProduct) =>dispatch =>{
     axios.delete( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`,{ headers: { Authorization: `Bearer ${dataToken.token}` } } )
     .then(()=>{
         // console.log(idCarProduct)
+    })
+    .catch(error=>console.log(error))
+    .finally(()=>dispatch(setIsLoading(false)))
+}
+
+export const updateCarThunk =(dataToken,idCarProduct,quantity) =>dispatch=>{
+    dispatch(setIsLoading(true))
+    console.log(quantity.quantity)
+    axios.put( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`, quantity,{ headers: { Authorization: `Bearer ${dataToken.token}` } } )
+    .then(()=>{
+         console.log(idCarProduct)
     })
     .catch(error=>console.log(error))
     .finally(()=>dispatch(setIsLoading(false)))

@@ -38,7 +38,6 @@ const Home = () => {
   const products = useSelector((state) => state.products);
 
   const addCar = (idProduct) => {
-    console.log("car al ENTRAR a la funcion", cars)
     if(cars.length === 0){
       dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
     }else{
@@ -50,7 +49,6 @@ const Home = () => {
       }
      }
     }
-    
   };
 
   return (

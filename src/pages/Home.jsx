@@ -23,14 +23,17 @@ const Home = () => {
     dispatch(getProductsThunk());
   }, []);
 
+  
   const [inputValue, setInputValue] = useState("");
-
+  const [showAsideFilter, setShowAsideFilter] = useState(false)
+  const [screen, setScreen] = useState(0)
+  
   const products = useSelector((state) => state.products);
 
   return (
     <div className="home">
-      <aside className="aside__home">
-        <Filters />
+      <aside className="aside__home" style={showAsideFilter ? {left: "0px"} : {left:"-400px", opacity:"0", zIndex:"-1"}}>
+        <Filters setShowAsideFilter={setShowAsideFilter} showAsideFilter={showAsideFilter}/>
       </aside>
       <Container className="py-1 input__home">
         <Row>
@@ -51,6 +54,7 @@ const Home = () => {
                 Button
               </Button>
             </InputGroup>
+            <span onClick={()=>setShowAsideFilter(!showAsideFilter)}>Mostrar Filtros<i className='bx bx-filter-alt' ></i></span>
           </Col>
         </Row>
         <Row xs={1} md={2} lg={3} className="py-1 ">

@@ -257,11 +257,43 @@ footer{
 /****aside****/
 
 .aside__home{
-  float: left;
-  width: 200px;
-  position:static;
+  position: fixed;
+  left: 0px;
+  top: 85px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #eee3cfbe;
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  transition: all 1s ease-in-out;
 }
 
-.categories__aside{
-  width: 800px;
+.aside__home i {
+  cursor: pointer;
+}
+
+.aside__head{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.aside__head i{
+  font-size: 20px;
+  color: tomato;
+}
+
+.formFilters{
+  border-top: #000 1px solid;
+  height: 0px;
+  overflow: hidden;
+  transition: all 1s ease-in;
+}
+
+.btnCategories__container{
+  border-top: #000 1px solid;
+  height: 0px;
+  overflow: hidden;
+  transition: all 1s ease-in;
 }

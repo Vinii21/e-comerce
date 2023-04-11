@@ -2,12 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useDispatch } from "react-redux";
-import { setToken } from "../store/slices/token.slice";
+/* import { useDispatch } from "react-redux";
+import { setToken } from "../store/slices/token.slice"; */
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch(); */
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -21,7 +21,7 @@ const Login = () => {
         password: pass,
       })
       .then((resp) => {
-        dispatch(setToken(resp.data));
+        /* dispatch(setToken(resp.data)); */
         setEmail("");
         setPass("");
         localStorage.setItem("token", resp.data.token)

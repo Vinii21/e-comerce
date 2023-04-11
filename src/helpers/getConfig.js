@@ -3,3 +3,5 @@ const getConfig = () => ({
         Authorization: `Bearer ${localStorage.getItem("token")}`
     }
 })
+
+export default getConfig;

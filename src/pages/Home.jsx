@@ -22,11 +22,7 @@ import Filters from "../components/Filters";
 
 const Home = () => {
   const dispatch = useDispatch();
-
-  const token = useSelector((state) => state.token);
   const cars = useSelector((state) => state.car);
-
-  
   
   const [inputValue, setInputValue] = useState("");
   const [showAsideFilter, setShowAsideFilter] = useState(false)
@@ -35,13 +31,13 @@ const Home = () => {
 
   const addCar = (idProduct) => {
     if(cars.length === 0){
-      dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
+      dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
     }else{
      for (const car of cars) {
       if(car?.product?.id === idProduct){
-        dispatch(updateCarThunk(token,car?.id,{ quantity: 2 }))
+        dispatch(updateCarThunk(car?.id,{ quantity: 2 }))
       }else{
-        dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
+        dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
       }
     }
   }
@@ -49,8 +45,8 @@ const Home = () => {
 };
 
 useEffect(() => {
-  dispatch(getProductsThunk())
-}, [cars]);
+  dispatch(getProductsThunk());
+}, []);
 
   return (
     <div className="home">
@@ -108,6 +104,9 @@ useEffect(() => {
                 <Button
                   onClick={() => {
                     addCar(product?.id);
+                    setTimeout(()=>{
+                      dispatch(getCarThunk())
+                    },1000)
                   }}
                   className="btnBuy"
                   variant="primary"

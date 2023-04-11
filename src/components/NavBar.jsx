@@ -13,7 +13,8 @@ const NavBar = () => {
   const [showCard, setShowCard] = useState(false);
   const navigate = useNavigate()
 
-  const token = useSelector(state => state.token)
+  /* const token = useSelector(state => state.token) */
+  const token = localStorage.getItem("token")
 
   const verifyUser = () => {
     if(token){

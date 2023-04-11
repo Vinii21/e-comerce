@@ -9,13 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 const Purchases = () => {
 
   const dispatch = useDispatch()
-  const token = useSelector(state => state.token)
 
   useEffect(()=>{
-    dispatch(getPurchasesThuk(token))
+    dispatch(getPurchasesThuk())
   },[])
-
-
 
   return (
     <div className="container-purchases">

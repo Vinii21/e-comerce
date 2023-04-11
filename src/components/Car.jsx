@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCarThunk, getCarThunk } from "../store/slices/car.slice";
-
+import { useEffect } from "react";
 
 const Car = ({ showCard, setShowCard }) => {
-  const token = useSelector((state) => state.token);
+  /* const token = useSelector((state) => state.token); */
   const cars = useSelector((state) => state.car);
   const dispatch = useDispatch();
 
   const deletCart =(id)=>{
-    dispatch(deleteCarThunk(token,id))
-    dispatch(getCarThunk(token));
+    dispatch(deleteCarThunk(id))
+    dispatch(getCarThunk());
   }
+  
 
   return (
     <div

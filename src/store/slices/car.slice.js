@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { setIsLoading } from './isLoading.slice';
+import getConfig from '../../helpers/getConfig';
 
 // Cambiamos mySlice por el nombre de nuestro slice (usersSlice, toDosSlice...)
 export const carSlice = createSlice({
@@ -14,11 +15,10 @@ export const carSlice = createSlice({
 })
 
 
-
-export const getCarThunk =(tokenData) => dispatch =>{
+export const getCarThunk =() => dispatch =>{
     dispatch(setIsLoading(true))
     
-    axios.get( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, { headers: { Authorization: `Bearer ${tokenData.token}` } } )
+    axios.get( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, getConfig() )
     .then((resp)=>{
         dispatch(setCar(resp.data))
     })
@@ -26,10 +26,10 @@ export const getCarThunk =(tokenData) => dispatch =>{
     .finally(()=>dispatch(setIsLoading(false)))
 }
 
-export const addCarThunk = (data, product) => dispatch => {
+export const addCarThunk = (product) => dispatch => {
     dispatch(setIsLoading(true))
     
-    axios.post( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, product, { headers: { Authorization: `Bearer ${data.token}` } } )
+    axios.post( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, product, getConfig() )
     .then(()=>{
         Swal.fire('Agregado al Carrito')
         // console.log(product)
@@ -38,20 +38,19 @@ export const addCarThunk = (data, product) => dispatch => {
     .finally(()=>dispatch(setIsLoading(false)))
 }
 
-export const deleteCarThunk = (dataToken,idCarProduct) =>dispatch =>{
+export const deleteCarThunk = (idCarProduct) =>dispatch =>{
     dispatch(setIsLoading(true))
     
-    axios.delete( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`,{ headers: { Authorization: `Bearer ${dataToken.token}` } } )
+    axios.delete( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`, getConfig() )
     .then(()=>{
-        // console.log(idCarProduct)
     })
     .catch(error=>console.log(error))
     .finally(()=>dispatch(setIsLoading(false)))
 }
 
-export const updateCarThunk =(dataToken,idCarProduct,quantity) =>dispatch=>{
+export const updateCarThunk =(idCarProduct,quantity) =>dispatch=>{
     dispatch(setIsLoading(true))
-    axios.put( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`, quantity,{ headers: { Authorization: `Bearer ${dataToken.token}` } } )
+    axios.put( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`, quantity, getConfig() )
     .then(()=>{
         Swal.fire('Actualizado en el Carrito')
     })

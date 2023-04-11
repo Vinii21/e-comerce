@@ -36,7 +36,7 @@ const NavBar = () => {
           <Nav className="justify-content-end flex-row " >
             <Nav.Link as={Link} to="/login" className="p-2"><i className='bx bx-user'></i></Nav.Link>
             <Nav.Link as={Link} to="/purchases" className="p-2"><i className='bx bx-box' ></i></Nav.Link>
-            <Nav.Link onClick={() => setShowCard(!showCard)} className="p-2" ><i className='bx bx-cart'></i></Nav.Link>
+            <Nav.Link onClick={() => verifyUser()} className="p-2" ><i className='bx bx-cart'></i></Nav.Link>
           </Nav>
           </Col>
          

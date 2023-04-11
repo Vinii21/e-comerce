@@ -37,10 +37,10 @@
   }
 }
 
-/****input home****/
+/* Home */
 
-.input__home{
-  margin-top: 100px;
+.home{
+padding-top: 100px;
 }
 
 /* CARD CSS */
@@ -95,6 +95,10 @@ justify-content: space-between;
 align-items: flex-start;
 margin-top: 20px;
 overflow-x: hidden;
+}
+
+.card__products .info__product-container img{
+height: 50px;
 }
 
 .info__product-container .input__group{
@@ -194,6 +198,8 @@ background-color: rgb(45, 47, 45);
 }
 
 .btnBuy{
+  /* position: absolute;
+  bottom:  2rem; */
   position: absolute;
   right: 50px;
   bottom: 2rem;
@@ -235,13 +241,9 @@ background-color: rgb(45, 47, 45);
 
 /*Detailt product*/
 
-.container__detail{
-  width: 100 vw;
-}
-
-.img__detail{
-  width: auto;
-  height: 350px;
+.container-detailt{
+  padding-top: 100px;
+  min-height: 100vh;
 }
 
 /* Footer */

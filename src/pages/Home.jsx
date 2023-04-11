@@ -26,17 +26,10 @@ const Home = () => {
   const token = useSelector((state) => state.token);
   const cars = useSelector((state) => state.car);
 
-  useEffect(() => {
-    dispatch(getProductsThunk());
-    if (token) {
-      dispatch(getCarThunk(token));
-    }
-  }, [cars]);
-
+  
   
   const [inputValue, setInputValue] = useState("");
   const [showAsideFilter, setShowAsideFilter] = useState(false)
-  const [screen, setScreen] = useState(0)
   
   const products = useSelector((state) => state.products);
 
@@ -50,9 +43,14 @@ const Home = () => {
       }else{
         dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
       }
-     }
     }
-  };
+  }
+  
+};
+
+useEffect(() => {
+  dispatch(getProductsThunk())
+}, [cars]);
 
   return (
     <div className="home">

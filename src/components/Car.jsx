@@ -43,7 +43,13 @@ const Car = ({ showCard, setShowCard }) => {
                     <button>+</button>
                   </div>
                 </div>
-                <i onClick={() =>deletCart(car.id)} className="bx bxs-trash"></i>  
+                <i onClick={() =>{
+                  deletCart(car.id)
+                  setTimeout(()=>{
+                    dispatch(getCarThunk())
+                  },1000)  
+                }}
+                   className="bx bxs-trash"></i>  
               </div>
               <p>
                 <strong>Total:</strong> {car.product?.price}

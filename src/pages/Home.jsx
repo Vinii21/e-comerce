@@ -33,19 +33,24 @@ const Home = () => {
     if(cars.length === 0){
       dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
     }else{
-     for (const car of cars) {
-      if(car?.product?.id === idProduct){
-        dispatch(updateCarThunk(car?.id,{ quantity: 2 }))
-      }else{
+      
+      const index = cars.filter(car => parseInt(car.product.id)  === parseInt(idProduct))
+      console.log(index)
+      if(index.length === 0){
+        console.log('agrego nuevo')
         dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
+      }else{
+        console.log('actualizo')
+        console.log(index[0]?.id)
+        dispatch(updateCarThunk(index[0]?.id,{quantity:2}))
       }
-    }
   }
   
 };
 
 useEffect(() => {
   dispatch(getProductsThunk());
+  dispatch(getCarThunk())
 }, []);
 
   return (

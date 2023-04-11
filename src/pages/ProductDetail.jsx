@@ -11,6 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterDetailThunk } from "../store/slices/products.slice";
 import BackHome from "../components/BackHome";
+import {
+  addCarThunk,
+  getCarThunk,
+  updateCarThunk,
+} from "../store/slices/car.slice";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -19,6 +24,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
 
   const products = useSelector((state) => state.products);
+  const cars = useSelector((state) => state.car);
 
   useEffect(() => {
     axios
@@ -29,6 +35,21 @@ const ProductDetail = () => {
       })
       .catch((error) => console.log(error));
   }, [id]);
+
+  const addCar = (idProduct) => {
+    if(cars.length === 0){
+      dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
+    } else {
+      const index = cars.filter(car => parseInt(car.product.id)  === parseInt(idProduct))
+      if(index.length === 0){
+        dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
+      }else{
+        dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1}))
+        Swal.fire('Actualizado en el Carrito')
+      }
+  }
+  
+  };
 
   return (
     <Container className="mt-5 pt-5 container__detail">
@@ -64,7 +85,14 @@ const ProductDetail = () => {
           <Card.Title className="px-3 py-1">{product.title}</Card.Title>
           <Card.Title className="py-2">{product.description}</Card.Title>
           <Card.Text className="py-2">$ {product?.price}</Card.Text>
-          <Button variant="primary">
+          <Button 
+            onClick={() => {
+              addCar(product?.id);
+              setTimeout(()=>{
+                dispatch(getCarThunk())
+              },1000)
+            }}
+            variant="primary">
             Add to card <i className="bx bx-cart p-3"></i>
           </Button>
         </Col>
@@ -74,35 +102,42 @@ const ProductDetail = () => {
       <Row xs={1} md={2} lg={3} className="py-1 justify-content-md-center">
         {products.map((product) => {
           return (
-            <Col key={product?.id} className="my-1 " >
-              <Card
-                as={Link}
-                to={`/product/${product.id}`}
-                style={{ width: "18rem", height: "30rem" }}
-              >
-                <Card.Img
-                  variant="top"
-                  src={product.images?.[0].url}
-                  style={{height: "200px" }}
-                  className="my-3 mx-auto"
-                />
-                <Card.Body>
-                  <Card.Title>{product.title}</Card.Title>
-                  <Card.Text>$ {product?.price}</Card.Text>
-                  <Card.Text>{product?.brand}</Card.Text>
-                  <Container fluid>
-                  <Row className="text-center">
-                    <Col xs={9}>
-                  <Button variant="primary">Go somewhere</Button>
-                    </Col>
-                    <Col xs={3}>
-                  <Button variant="primary"><i className="bx bx-cart"></i> </Button>
-                    </Col>
-                  </Row>
-                  </Container>
-                </Card.Body>
-              </Card>
-            </Col>
+            <Col key={product?.id} className="my-1 colCard">
+            <Card
+              className="CardProduct"
+              as={Link}
+              to={`/product/${product.id}`}
+              style={{ width: "100%", height: "400px" }}
+            >
+              <Card.Img
+                className="m-1"
+                variant="top"
+                style={{
+                  width: "auto",
+                  height: "190px",
+                  objectFit: "contain",
+                }}
+                src={product.images?.[0].url}
+              />
+              <Card.Body>
+                <Card.Title>{product.title}</Card.Title>
+                <Card.Text>$ {product?.price}</Card.Text>
+                <Card.Text>{product?.brand}</Card.Text>
+              </Card.Body>
+            </Card>
+            <Button
+              onClick={() => {
+                addCar(product?.id);
+                setTimeout(()=>{
+                  dispatch(getCarThunk())
+                },1000)
+              }}
+              className="btnBuy"
+              variant="primary"
+            >
+              <i className="bx bx-cart-add"></i>
+            </Button>
+          </Col>
           );
         })}
       </Row>

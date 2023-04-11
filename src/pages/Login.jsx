@@ -2,14 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-/* import { useDispatch } from "react-redux";
-import { setToken } from "../store/slices/token.slice"; */
 import { useNavigate } from "react-router-dom";
+import FormNewUser from "../components/FormNewUser";
 
 const Login = () => {
-  /* const dispatch = useDispatch(); */
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [showNewUser, setShowNewUser] = useState(false)
 
   const navigate = useNavigate()
 
@@ -21,10 +20,10 @@ const Login = () => {
         password: pass,
       })
       .then((resp) => {
-        /* dispatch(setToken(resp.data)); */
         setEmail("");
         setPass("");
         localStorage.setItem("token", resp.data.token)
+        localStorage.setItem("name", resp.data.user.firstName)
         navigate("/")
       })
       .catch((error) => {
@@ -39,9 +38,13 @@ const Login = () => {
 
   return (
     <div className="login">
+      { showNewUser ? 
+        <FormNewUser setShowNewUser={setShowNewUser} showNewUser={showNewUser}/>
+        :
+        <>
       <Form onSubmit={(e) => onSumit(e)} className="form-login">
-        <h1>Bien venido a la tienda </h1>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <h1>Welcome! Enter your email and password to continue</h1>
+         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -50,7 +53,6 @@ const Login = () => {
             value={email}
           />
         </Form.Group>
-        {/* Este es el cambio */}
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -61,9 +63,12 @@ const Login = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Login
         </Button>
       </Form>
+        </>
+        }
+        <span>{showNewUser ? "Don't have an account?" : "Already have an account?"}</span><span onClick={()=>setShowNewUser(!showNewUser)}>{showNewUser ? "Log in" : "Sign up"}</span>
     </div>
   );
 };

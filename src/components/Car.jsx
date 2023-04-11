@@ -1,15 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCarThunk, getCarThunk } from "../store/slices/car.slice";
-import { useEffect } from "react";
+import { updateCarThunk } from "../store/slices/car.slice";
+import { getPurchasesThuk, addPurchasesThuk } from "../store/slices/purchases.slice"
+import { useNavigate } from "react-router-dom";
 
 const Car = ({ showCard, setShowCard }) => {
-  /* const token = useSelector((state) => state.token); */
   const cars = useSelector((state) => state.car);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate()
 
   const deletCart =(id)=>{
     dispatch(deleteCarThunk(id))
     dispatch(getCarThunk());
+  }
+
+  const changeCount = (car, operator) => {
+    if(operator === "+") {
+      dispatch(updateCarThunk(car.id,{quantity: car.quantity + 1}))
+    } else {
+      if(car.quantity === 1){
+        deletCart(car.id)
+      } else {
+        dispatch(updateCarThunk(car.id,{quantity: car.quantity - 1}))
+      }
+    }
+    setTimeout(()=>{
+      dispatch(getCarThunk());
+    }, 500)
   }
   
 
@@ -38,9 +56,9 @@ const Car = ({ showCard, setShowCard }) => {
                 <div className="input__group">
                   <h3>{car.product?.title}</h3>
                   <div>
-                    <button>-</button>
-                    <input type="number" min="0"  value={Number( car.quantity)} />
-                    <button>+</button>
+                    <button onClick={()=>changeCount(car, "-")}>-</button>
+                    <input type="number" min="0"  value={Number( car.quantity)} readOnly/>
+                    <button onClick={()=>changeCount(car, "+")}>+</button>
                   </div>
                 </div>
                 <i onClick={() =>{
@@ -65,7 +83,10 @@ const Car = ({ showCard, setShowCard }) => {
           </span>
           <span>$00.0</span>
         </div>
-        <button>Checkout</button>
+        <button onClick={()=>{
+          navigate("/purchases")
+          setShowCard(!showCard)
+        }}>Checkout</button>
       </div>
     </div>
   );

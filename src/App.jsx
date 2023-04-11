@@ -9,6 +9,7 @@ import Loader from "./components/Loader"
 import { useSelector } from 'react-redux';
 import Footer from './components/Footer';
 import ProtectedRoutes from './components/ProtectedRoutes';
+import SessionStart from './pages/SessionStart';
 
 function App() {
   const isLoading = useSelector(state => state.isLoading)
@@ -26,6 +27,7 @@ function App() {
 
             <Route element={<ProtectedRoutes />}>
               <Route path="/purchases" element={<Purchases />} />
+              <Route path='/user' element={<SessionStart />}/>
             </Route>
 
           </Routes>

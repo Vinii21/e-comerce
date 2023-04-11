@@ -28,4 +28,10 @@ export const getPurchasesThuk = () => dispatch => {
     .finally(()=>dispatch(setIsLoading(false)))
 }
 
+export const addPurchasesThuk = () => dispatch => {
+    axios.post("https://e-commerce-api-v2.academlo.tech/api/v1/purchases", getConfig() )
+    .then()
+    .catch(error=>console.error(error))
+}
+
 export default purchasesSlice.reducer;

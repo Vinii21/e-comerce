@@ -8,7 +8,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getProductsThunk,
-  filterCategoriesThunk,
   filterHeadLineThunk,
 } from "../store/slices/products.slice";
 import {
@@ -32,17 +31,13 @@ const Home = () => {
   const addCar = (idProduct) => {
     if(cars.length === 0){
       dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
-    }else{
-      
+    } else {
       const index = cars.filter(car => parseInt(car.product.id)  === parseInt(idProduct))
-      console.log(index)
       if(index.length === 0){
-        console.log('agrego nuevo')
         dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
       }else{
-        console.log('actualizo')
-        console.log(index[0]?.id)
-        dispatch(updateCarThunk(index[0]?.id,{quantity:2}))
+        dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1}))
+        Swal.fire('Actualizado en el Carrito')
       }
   }
   

@@ -12,7 +12,6 @@ import {
   filterPriceThunk
 } from "../store/slices/products.slice";
 import { useDispatch } from "react-redux";
-/* import NavDropdown from 'react-bootstrap/NavDropdown'; */
 
 export default function Filters({setShowAsideFilter, showAsideFilter}) {
   const dispatch = useDispatch();

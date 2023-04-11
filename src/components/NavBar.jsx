@@ -4,15 +4,28 @@ import Navbar from "react-bootstrap/Navbar";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
-import Card from "../components/Card";
+import Car from "../components/Car";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [showCard, setShowCard] = useState(false);
+  const navigate = useNavigate()
+
+  const token = useSelector(state => state.token)
+
+  const verifyUser = () => {
+    if(token){
+      setShowCard(true)
+    } else {
+      navigate("/login")
+    }
+  }
 
   return (
     <>
-    <Card showCard={showCard} setShowCard={setShowCard} />
+    <Car showCard={showCard} setShowCard={setShowCard} />
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-top nav">
       <Container>
        

@@ -11,17 +11,27 @@ import {
   filterCategoriesThunk,
   filterHeadLineThunk,
 } from "../store/slices/products.slice";
+import {
+  addCarThunk,
+  getCarThunk,
+  updateCarThunk,
+} from "../store/slices/car.slice";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 
 const Home = () => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state) => state.token);
+  const cars = useSelector((state) => state.car);
+
   useEffect(() => {
     dispatch(getProductsThunk());
-  }, []);
+    if (token) {
+      dispatch(getCarThunk(token));
+    }
+  }, [cars]);
 
   
   const [inputValue, setInputValue] = useState("");
@@ -29,6 +39,20 @@ const Home = () => {
   const [screen, setScreen] = useState(0)
   
   const products = useSelector((state) => state.products);
+
+  const addCar = (idProduct) => {
+    if(cars.length === 0){
+      dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
+    }else{
+     for (const car of cars) {
+      if(car?.product?.id === idProduct){
+        dispatch(updateCarThunk(token,car?.id,{ quantity: 2 }))
+      }else{
+        dispatch(addCarThunk(token, { quantity: 1, productId: idProduct }));
+      }
+     }
+    }
+  };
 
   return (
     <div className="home">
@@ -85,9 +109,9 @@ const Home = () => {
                 </Card>
                 <Button
                   onClick={() => {
-                    console.log("hola");
+                    addCar(product?.id);
                   }}
-                  className="btnBuy "
+                  className="btnBuy"
                   variant="primary"
                 >
                   <i className="bx bx-cart-add"></i>

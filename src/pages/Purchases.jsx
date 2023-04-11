@@ -2,9 +2,21 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import BackHome from "../components/BackHome";
-
+import { getPurchasesThuk } from "../store/slices/purchases.slice"
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Purchases = () => {
+
+  const dispatch = useDispatch()
+  const token = useSelector(state => state.token)
+
+  useEffect(()=>{
+    dispatch(getPurchasesThuk(token))
+  },[])
+
+
+
   return (
     <div className="container-purchases">
       <BackHome page={"purchases"} />

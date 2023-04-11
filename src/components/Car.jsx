@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCarThunk, getCarThunk } from "../store/slices/car.slice";
-import { useEffect, useState } from "react";
 
 
 const Car = ({ showCard, setShowCard }) => {

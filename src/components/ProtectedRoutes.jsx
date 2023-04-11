@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const ProtectedRoutes = () => {
 
     const token = useSelector(state => state.token)
+ /*    const token = localStorage.getItem("token") */
 
     if(token) {
         return <Outlet />

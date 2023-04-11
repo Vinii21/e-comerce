@@ -28,7 +28,6 @@ const NavBar = () => {
     <Car showCard={showCard} setShowCard={setShowCard} />
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-top nav">
       <Container>
-       
           <Col xs={8} md={8}>
         <Navbar.Brand as={Link} to="/">Products App</Navbar.Brand>      
         </Col>
@@ -39,7 +38,6 @@ const NavBar = () => {
             <Nav.Link onClick={() => verifyUser()} className="p-2" ><i className='bx bx-cart'></i></Nav.Link>
           </Nav>
           </Col>
-         
       </Container>
     </Navbar>
     </>

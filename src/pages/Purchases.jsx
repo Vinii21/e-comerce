@@ -38,7 +38,7 @@ const Purchases = () => {
                     <input style={{ width: "50px" }} type="text" defaultValue={purchase?.quantity} readOnly/>
                   </Col>
                   <Col>
-                    <span>${purchase?.product?.price}</span>
+                    <span>${purchase?.product?.price * purchase?.quantity}</span>
                   </Col>
                 </Row>
               </Container>

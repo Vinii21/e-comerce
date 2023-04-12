@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getCarThunk, updateCarThunk } from "../store/slices/car.slice";
 import { useDispatch } from "react-redux";
 
-const Item = ({deletCart, data}) => {
+const Item = ({deletCart, data, updateTotal}) => {
 
     const [count, setCount] = useState(Number(data?.quantity))
     
@@ -13,17 +13,24 @@ const Item = ({deletCart, data}) => {
           let suma = count + 1 
           setCount(suma)
           dispatch(updateCarThunk(data?.id, {quantity: count + 1 }))
+          updateTotal()
         } else {
           if(count === 1){
             setCount(1)
             dispatch(updateCarThunk(data?.id, {quantity: count}))
+            updateTotal()
           } else {
             let resta = count - 1 
             setCount(resta)
             dispatch(updateCarThunk(data?.id, {quantity: count - 1 }))
+            updateTotal()
           }
         }
       }
+
+      useEffect(()=>{
+        updateTotal()
+      },[])
 
 
     return (  
@@ -47,7 +54,7 @@ const Item = ({deletCart, data}) => {
                    className="bx bxs-trash"></i>  
               </div>
               <p>
-                <strong>Total:</strong> {data.product?.price}
+                <strong>Total:</strong> {data.product?.price * count}
               </p>
             </li>
     );

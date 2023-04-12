@@ -16,14 +16,11 @@ export const carSlice = createSlice({
 
 
 export const getCarThunk =() => dispatch =>{
-    dispatch(setIsLoading(true))
-    
     axios.get( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, getConfig() )
     .then((resp)=>{
         dispatch(setCar(resp.data))
     })
     .catch(error=>console.log(error))
-    .finally(()=>dispatch(setIsLoading(false)))
 }
 
 export const addCarThunk = (product) => dispatch => {

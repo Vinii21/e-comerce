@@ -3,7 +3,7 @@ import { deleteCarThunk, getCarThunk } from "../store/slices/car.slice";
 import { useNavigate } from "react-router-dom";
 import Item from "./Item";
 import { addPurchasesThuk } from "../store/slices/purchases.slice"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Car = ({ showCard, setShowCard }) => {
 
@@ -14,7 +14,7 @@ const Car = ({ showCard, setShowCard }) => {
 
   const navigate = useNavigate()
 
-  const deletCart =(id)=>{
+  const deletCart = (id)=>{
     dispatch(deleteCarThunk(id))
     dispatch(getCarThunk());
   }
@@ -55,7 +55,7 @@ const Car = ({ showCard, setShowCard }) => {
           <span>
             <strong>Total:</strong>
           </span>
-          <span>${total}</span>
+          <span>${cars.length === 0 ? "0.00" : total}</span>
         </div>
         <button onClick={()=>{
           navigate("/purchases")

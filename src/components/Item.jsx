@@ -13,24 +13,22 @@ const Item = ({deletCart, data, updateTotal}) => {
           let suma = count + 1 
           setCount(suma)
           dispatch(updateCarThunk(data?.id, {quantity: count + 1 }))
-          updateTotal()
         } else {
           if(count === 1){
             setCount(1)
             dispatch(updateCarThunk(data?.id, {quantity: count}))
-            updateTotal()
           } else {
             let resta = count - 1 
             setCount(resta)
             dispatch(updateCarThunk(data?.id, {quantity: count - 1 }))
-            updateTotal()
           }
         }
+        dispatch(getCarThunk())
       }
 
       useEffect(()=>{
         updateTotal()
-      },[])
+      },[changeCount])
 
 
     return (  

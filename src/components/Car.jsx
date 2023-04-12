@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCarThunk, getCarThunk, updateCarThunk } from "../store/slices/car.slice";
+import { deleteCarThunk, getCarThunk } from "../store/slices/car.slice";
 import { useNavigate } from "react-router-dom";
 import Item from "./Item";
+import { addPurchasesThuk } from "../store/slices/purchases.slice"
 
 const Car = ({ showCard, setShowCard }) => {
 
@@ -47,8 +48,10 @@ const Car = ({ showCard, setShowCard }) => {
           <span>$00.0</span>
         </div>
         <button onClick={()=>{
-          /* navigate("/purchases")
-          setShowCard(!showCard) */
+          navigate("/purchases")
+          setShowCard(!showCard)
+          dispatch(addPurchasesThuk())
+          dispatch(getCarThunk())
         }}>Checkout</button>
       </div>
     </div>

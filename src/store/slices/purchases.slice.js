@@ -22,7 +22,6 @@ export const getPurchasesThuk = () => dispatch => {
     axios.get("https://e-commerce-api-v2.academlo.tech/api/v1/purchases", getConfig() )
     .then( resp => {
         dispatch(setPurchases(resp.data))
-        console.log("Entro al then de purchases", resp.data)
     })
     .catch(error=>console.error(error))
     .finally(()=>dispatch(setIsLoading(false)))

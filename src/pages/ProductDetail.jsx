@@ -66,42 +66,43 @@ const ProductDetail = () => {
     <Container className="mt-5 pt-5 container__detail">
       <BackHome page={product.title} />
       <Row className="pt-5">
-        <Col>
+        <Col xs={12} md={6} className="mx-auto">
           <Carousel>
             <Carousel.Item>
               <img
-                className="d-block img__detail"
+                className="d-block img__detail w-100"
                 src={product.images?.[0].url}
                 alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
-                className="d-block img__detail"
+                className="d-block img__detail w-100"
                 src={product.images?.[1].url}
                 alt="Second slide"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
-                className="d-block img__detail"
+                className="d-block img__detail w-100"
                 src={product.images?.[2].url}
                 alt="Third slide"
               />
             </Carousel.Item>
           </Carousel>
         </Col>
-        <Col>
+        <Col s={12} md={6}>
           <Card.Text>{product?.brand}</Card.Text>
           <Card.Title className="px-3 py-1">{product.title}</Card.Title>
           <Card.Title className="py-2">{product.description}</Card.Title>
-          <Card.Text className="py-2">$ {product?.price}</Card.Text>
-          <div>
+          <Card.Text className="py-2">$ {product?.price}</Card.Text> 
+          <div className="m-3 input__group__detail">
               <button onClick={()=>changeCount("-")}>-</button>
                 <input type="number" min="0"  value={count} readOnly/>
               <button onClick={()=>changeCount("+")}>+</button>
             </div>
-          <Button 
+            <div className="btn__detail">
+          <Button className="text-center m-3"
             onClick={() => {
               addCar(product?.id);
               setTimeout(()=>{
@@ -111,7 +112,8 @@ const ProductDetail = () => {
             variant="primary">
             Add to card <i className="bx bx-cart p-3"></i>
           </Button>
-        </Col>
+            </div>
+          </Col> 
       </Row>
       <h2 className="mt-5 pt-5">Recomendados</h2>
 

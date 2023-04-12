@@ -30,7 +30,7 @@ const NavBar = () => {
         <Navbar.Brand as={Link} to="/">Products App</Navbar.Brand>      
         </Col>
         <Col xs={4} md={4}>
-          <Nav className="justify-content-end flex-row " >
+          <Nav className="justify-content-end flex-row navBar " >
             <Nav.Link as={Link} to={token ? "/user" : "/login"} className="p-2"><i className='bx bx-user'></i></Nav.Link>
             <Nav.Link as={Link} to="/purchases" className="p-2"><i className='bx bx-box' ></i></Nav.Link>
             <Nav.Link onClick={() => verifyUser()} className="p-2" ><i className='bx bx-cart'></i></Nav.Link>

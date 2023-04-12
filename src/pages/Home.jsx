@@ -22,36 +22,55 @@ import Filters from "../components/Filters";
 const Home = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.car);
-  
+
   const [inputValue, setInputValue] = useState("");
-  const [showAsideFilter, setShowAsideFilter] = useState(false)
-  
+  const [showAsideFilter, setShowAsideFilter] = useState(false);
+
   const products = useSelector((state) => state.products);
 
-  const addCar = (idProduct) => {
-    if(cars.length === 0){
-      dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
-    } else {
-      const index = cars.filter(car => parseInt(car.product.id)  === parseInt(idProduct))
-      if(index.length === 0){
-        dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
-      }else{
-        /* dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1})) */
-        Swal.fire('Este producto ya está en el carrito')
-      }
-  }
+  let mediaqueryList = window.matchMedia("(min-width: 900px)");
   
-};
+  setInterval(() => {
+    if (mediaqueryList.matches) {
+      setShowAsideFilter(true);   
+    }
+  },2000);
 
-useEffect(() => {
-  dispatch(getProductsThunk());
-  dispatch(getCarThunk())
-}, []);
+  const addCar = (idProduct) => {
+    if (cars.length === 0) {
+      dispatch(addCarThunk({ quantity: 1, productId: idProduct }));
+    } else {
+      const index = cars.filter(
+        (car) => parseInt(car.product.id) === parseInt(idProduct)
+      );
+      if (index.length === 0) {
+        dispatch(addCarThunk({ quantity: 1, productId: idProduct }));
+      } else {
+        /* dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1})) */
+        Swal.fire("Este producto ya está en el carrito");
+      }
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getProductsThunk());
+    dispatch(getCarThunk());
+  }, []);
 
   return (
     <div className="home">
-      <aside className="aside__home" style={showAsideFilter ? {left: "0px"} : {left:"-400px", opacity:"0", zIndex:"-1"}}>
-        <Filters setShowAsideFilter={setShowAsideFilter} showAsideFilter={showAsideFilter}/>
+      <aside
+        className="aside__home "
+        style={
+          showAsideFilter
+            ? { left: "0px" }
+            : { left: "-400px", opacity: "0", zIndex: "-1" }
+        }
+      >
+        <Filters
+          setShowAsideFilter={setShowAsideFilter}
+          showAsideFilter={showAsideFilter}
+        />
       </aside>
       <Container className="py-1 input__home">
         <Row>
@@ -72,7 +91,12 @@ useEffect(() => {
                 Button
               </Button>
             </InputGroup>
-            <span onClick={()=>setShowAsideFilter(!showAsideFilter)}>Mostrar Filtros<i className='bx bx-filter-alt' ></i></span>
+            <span
+              className="btn__filter"
+              onClick={() => setShowAsideFilter(!showAsideFilter)}
+            >
+              Mostrar Filtros<i className="bx bx-filter-alt"></i>
+            </span>
           </Col>
         </Row>
         <Row xs={1} md={2} lg={3} className="py-1 ">
@@ -104,9 +128,9 @@ useEffect(() => {
                 <Button
                   onClick={() => {
                     addCar(product?.id);
-                    setTimeout(()=>{
-                      dispatch(getCarThunk())
-                    },1000)
+                    setTimeout(() => {
+                      dispatch(getCarThunk());
+                    }, 1000);
                   }}
                   className="btnBuy"
                   variant="primary"

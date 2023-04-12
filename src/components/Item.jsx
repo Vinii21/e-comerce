@@ -30,7 +30,7 @@ const Item = ({deletCart, data}) => {
         <li>
               <div className="info__product-container">
                 <img src={data.product?.images?.[0]?.url} alt="producto" />
-                <div className="input__group">
+                <div className="input__group m-2 p-2">
                   <h3>{data.product?.title}</h3>
                   <div>
                     <button onClick={()=>changeCount("-")}>-</button>
@@ -46,7 +46,7 @@ const Item = ({deletCart, data}) => {
                 }}
                    className="bx bxs-trash"></i>  
               </div>
-              <p>
+              <p className="mt-2 mb-2">
                 <strong>Total:</strong> {data.product?.price}
               </p>
             </li>

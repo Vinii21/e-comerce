@@ -27,13 +27,13 @@ const Car = ({ showCard, setShowCard }) => {
       }
     >
       <div className="card__close">
-        <h4>Carrito de compras</h4>
+        <h5>Carrito de compras</h5>
         <i
           onClick={() => setShowCard(!showCard)}
           className="bx bxs-x-circle"
         ></i>
       </div>
-      <ul className="card__products">
+      <ul className="card__products m-1">
         {cars?.map((car) => {
           return (
             <Item  key={car?.id} deletCart={deletCart} data={car}/>
@@ -52,7 +52,9 @@ const Car = ({ showCard, setShowCard }) => {
           setShowCard(!showCard)
           dispatch(addPurchasesThuk())
           dispatch(getCarThunk())
-        }}>Checkout</button>
+        }}
+        className="btn__checkout"
+        >Checkout</button>
       </div>
     </div>
   );

@@ -5,7 +5,9 @@
 }
 :root{
   --color-form-login: black;
-}
+  --border-btn: 14px;
+  --box-shadow-btn:   2px 2px 10px #0000007e;
+} 
 
 body{
   position: relative;

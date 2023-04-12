@@ -43,7 +43,7 @@ const Login = () => {
         :
         <>
       <Form onSubmit={(e) => onSumit(e)} className="form-login">
-        <h1>Welcome! Enter your email and password to continue</h1>
+        <p className="text-center">Welcome! Enter your email and password to continue</p>
          <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -62,7 +62,7 @@ const Login = () => {
             value={pass}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="btn__login" variant="primary" type="submit">
           Login
         </Button>
       </Form>

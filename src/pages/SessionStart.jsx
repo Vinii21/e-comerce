@@ -7,7 +7,7 @@ const SessionStart = () => {
         <div className="session__start">
             <div className="session__info">
                 <h6>{localStorage.getItem("name")}</h6>
-                <button onClick={()=>{
+                <button className="btn__logOut" onClick={()=>{
                     localStorage.clear("token")
                     localStorage.clear("name")
                     navigate("/login")

@@ -13,8 +13,7 @@ import { filterDetailThunk } from "../store/slices/products.slice";
 import BackHome from "../components/BackHome";
 import {
   addCarThunk,
-  getCarThunk,
-  updateCarThunk,
+  getCarThunk
 } from "../store/slices/car.slice";
 
 const ProductDetail = () => {
@@ -25,6 +24,7 @@ const ProductDetail = () => {
 
   const products = useSelector((state) => state.products);
   const cars = useSelector((state) => state.car);
+  const [count, setCount] = useState(1)
 
   useEffect(() => {
     axios
@@ -38,18 +38,29 @@ const ProductDetail = () => {
 
   const addCar = (idProduct) => {
     if(cars.length === 0){
-      dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
+      dispatch(addCarThunk( { quantity: count, productId: idProduct }));
     } else {
       const index = cars.filter(car => parseInt(car.product.id)  === parseInt(idProduct))
       if(index.length === 0){
-        dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
+        dispatch(addCarThunk( { quantity: count, productId: idProduct }));
       }else{
-        dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1}))
-        Swal.fire('Actualizado en el Carrito')
+        Swal.fire('Este producto ya está en el carrito')
       }
   }
-  
+
   };
+
+  const changeCount = (operator) => {
+    if(operator === "+") {
+      setCount(count + 1)
+    } else {
+      if(count === 1){
+        setCount(1)
+      } else {
+        setCount(count - 1)
+      }
+    }
+  }
 
   return (
     <Container className="mt-5 pt-5 container__detail">
@@ -85,6 +96,11 @@ const ProductDetail = () => {
           <Card.Title className="px-3 py-1">{product.title}</Card.Title>
           <Card.Title className="py-2">{product.description}</Card.Title>
           <Card.Text className="py-2">$ {product?.price}</Card.Text>
+          <div>
+              <button onClick={()=>changeCount("-")}>-</button>
+                <input type="number" min="0"  value={count} readOnly/>
+              <button onClick={()=>changeCount("+")}>+</button>
+            </div>
           <Button 
             onClick={() => {
               addCar(product?.id);

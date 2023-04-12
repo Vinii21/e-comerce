@@ -29,8 +29,8 @@ export const getPurchasesThuk = () => dispatch => {
 }
 
 export const addPurchasesThuk = () => dispatch => {
-    axios.post("https://e-commerce-api-v2.academlo.tech/api/v1/purchases", getConfig() )
-    .then()
+    axios.post("https://e-commerce-api-v2.academlo.tech/api/v1/purchases", {}, getConfig() )
+    .then(()=>console.log("entre"))
     .catch(error=>console.error(error))
 }
 

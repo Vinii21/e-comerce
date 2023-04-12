@@ -36,8 +36,8 @@ const Home = () => {
       if(index.length === 0){
         dispatch(addCarThunk( { quantity: 1, productId: idProduct }));
       }else{
-        dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1}))
-        Swal.fire('Actualizado en el Carrito')
+        /* dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1})) */
+        Swal.fire('Este producto ya está en el carrito')
       }
   }
   

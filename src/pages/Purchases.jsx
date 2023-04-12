@@ -10,10 +10,10 @@ const Purchases = () => {
 
   const dispatch = useDispatch()
 
-/*   useEffect(()=>{
+  useEffect(()=>{
     dispatch(getPurchasesThuk())
     dispatch(addPurchasesThuk())
-  },[]) */
+  },[])
 
   return (
     <div className="container-purchases">

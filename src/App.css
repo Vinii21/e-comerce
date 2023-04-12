@@ -52,7 +52,7 @@ position: fixed;
 z-index: 100;
 background-color: #f6f8fc;
 transition: 1s all ease-in-out;
-margin-top: 88px;
+margin-top: 90px;
 display: flex;
 flex-direction: column;
 }
@@ -417,7 +417,7 @@ footer{
     display: none;
   }
 
-  .bxs-x-circle{
+  .bxs-aside{
     display: none;
   }
 
@@ -453,5 +453,8 @@ footer{
   }
   .container__img__purchases{
     height: 100px;
+  }
+  .card__container{
+    width: 40%;
   }
 }

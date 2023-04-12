@@ -44,7 +44,7 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
         <h3>Filtros</h3>
         <i
           onClick={() => setShowAsideFilter(!showAsideFilter)}
-          className="bx bxs-x-circle"
+          className="bx bxs-x-circle bxs-aside"
         ></i>
       </div>
       <Row className=" aside-price d-flex justify-content-center align-items-center flex-column">

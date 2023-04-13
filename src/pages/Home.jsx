@@ -13,7 +13,6 @@ import {
 import {
   addCarThunk,
   getCarThunk,
-  updateCarThunk,
 } from "../store/slices/car.slice";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -46,7 +45,6 @@ const Home = () => {
       if (index.length === 0) {
         dispatch(addCarThunk({ quantity: 1, productId: idProduct }));
       } else {
-        /* dispatch(updateCarThunk(index[0]?.id,{quantity: index[0].quantity + 1})) */
         Swal.fire("Este producto ya está en el carrito");
       }
     }
@@ -73,7 +71,15 @@ const Home = () => {
         />
       </aside>
       <Container className="py-1 input__home">
-        <Row>
+        {
+          products.length === 0 ?
+          <div className="d-flex justify-content-center align-items-center flex-column" style={{ minHeight:"100vh" }}>
+            <h6>No hay productos para mostrar</h6>
+            <button onClick={()=>dispatch(getProductsThunk())} className="btn btn-dark">Cargar todos los productos</button>
+          </div>
+          :
+          <>
+          <Row>
           <Col>
             <InputGroup className="mb-3">
               <Form.Control
@@ -141,6 +147,8 @@ const Home = () => {
             );
           })}
         </Row>
+        </>
+        }
       </Container>
     </div>
   );

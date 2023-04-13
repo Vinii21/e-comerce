@@ -42,7 +42,7 @@ export const deleteCarThunk = (idCarProduct) =>dispatch =>{
 
 export const updateCarThunk =(idCarProduct,quantity) =>dispatch=>{
     axios.put( `https://e-commerce-api-v2.academlo.tech/api/v1/cart/${idCarProduct}`, quantity, getConfig() )
-    .then()
+    .then(()=>dispatch(getCarThunk()))
     .catch(error=>console.error(error))
 }
 

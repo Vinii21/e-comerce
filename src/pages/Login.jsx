@@ -62,7 +62,7 @@ const Login = () => {
             value={pass}
           />
         </Form.Group>
-        <Button className="btn__login" variant="primary" type="submit">
+        <Button className="btn__login" variant="primary" type="submit" onClick={()=>console.clear()}>
           Login
         </Button>
       </Form>

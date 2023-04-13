@@ -14,13 +14,22 @@ export const carSlice = createSlice({
     }
 })
 
+const token = localStorage.getItem("token")
 
 export const getCarThunk =() => dispatch =>{
     axios.get( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, getConfig() )
     .then((resp)=>{
         dispatch(setCar(resp.data))
     })
-    .catch(error=>console.log(error))
+    .catch(error=>{
+        if(token){
+            console.log("State 200")
+        } else if(token === null) {
+            console.log("State 403, However, you just have to log in to solve it. :)")
+        } else {
+            console.log(error)
+        }
+    })
 }
 
 export const addCarThunk = (product) => dispatch => {

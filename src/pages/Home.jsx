@@ -116,12 +116,12 @@ const Home = () => {
                 Button
               </Button>
             </InputGroup>
-            <span
+            {!mediaqueryList.matches && <span
               className="btn__filter btn"
               onClick={() => setShowAsideFilter(!showAsideFilter)}
             >
               Mostrar Filtros<i className="bx bx-filter-alt"></i>
-            </span>
+            </span>}
           </Col>
         </Row>
         <Row xs={1} md={2} lg={3} className="py-1 ">

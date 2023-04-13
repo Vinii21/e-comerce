@@ -11,7 +11,7 @@ import {
   filterCategoriesThunk,
   filterPriceThunk,
 } from "../store/slices/products.slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Filters({ setShowAsideFilter, showAsideFilter }) {
   const dispatch = useDispatch();
@@ -84,10 +84,14 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
           <Button
             className="mt-3 m-auto"
             onClick={() => {
-              dispatch(filterPriceThunk(min, max));
+              if(min < max){
+                dispatch(filterPriceThunk(min, max));
+                setShowAsideFilter(!showAsideFilter);
+              } else {
+                Swal.fire("El min no debería ser mayor que el max") 
+              }
               setMin("");
               setMax("");
-              setShowAsideFilter(!showAsideFilter);
             }}
           >
             Filter Price

@@ -285,6 +285,10 @@ background-color: rgb(45, 47, 45);
   margin-bottom: 50px;
 }
 
+.carousel__container{
+  width: 90vw;
+}
+
 .btn__detail{
   display: flex;
   align-items: center;
@@ -426,6 +430,11 @@ footer a:hover{
     font-size: 25px;
   }  
 }
+@media only screen and (min-width: 768px){
+  .carousel__container{
+    width: 350px;
+  }
+}
 
 @media only screen and (min-width: 900px) {
 
@@ -473,5 +482,10 @@ footer a:hover{
   }
   .card__container{
     width: 40%;
+  }
+
+  .carousel__container{
+    width: 350px;
+    text-align: left;
   }
 }

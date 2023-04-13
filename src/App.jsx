@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import Footer from './components/Footer';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import SessionStart from './pages/SessionStart';
+import Error from './pages/Error';
 
 function App() {
   const isLoading = useSelector(state => state.isLoading)
@@ -21,6 +22,7 @@ function App() {
           }
           <Navbar />
           <Routes>
+            <Route path='*' element={<Error />} />
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />

@@ -63,30 +63,30 @@ const ProductDetail = () => {
   }
 
   return (
-    <Container className="mt-5 pt-5 container__detail">
+    <Container className="pt-5 container__detail">
       <BackHome page={product.title} />
       <Row className="pt-5">
-        <Col xs={12} md={6} className="mx-auto">
-          <Carousel>
-            <Carousel.Item>
+        <Col xs={6} md={6}>
+          <Carousel className="carousel__container">
+            <Carousel.Item className="item">
               <img
-                className="d-block img__detail w-100"
                 src={product.images?.[0].url}
                 alt="First slide"
+                style={{objectFit:"contain", width:"100%", height:"400px", objectPosition:"center"}}
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
-                className="d-block img__detail w-100"
                 src={product.images?.[1].url}
                 alt="Second slide"
+                style={{objectFit:"contain", width:"100%", height:"400px", objectPosition:"center"}}
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
-                className="d-block img__detail w-100"
                 src={product.images?.[2].url}
                 alt="Third slide"
+                style={{objectFit:"contain", height:"400px", objectPosition:"center", width:"100%"}}
               />
             </Carousel.Item>
           </Carousel>

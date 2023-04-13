@@ -31,7 +31,7 @@ const NavBar = () => {
         </Col>
         <Col xs={4} md={4}>
           <Nav className="justify-content-end flex-row navBar " >
-            <Nav.Link as={Link} to={token ? "/user" : "/login"} className="p-2"><i className='bx bx-user'></i></Nav.Link>
+            <Nav.Link as={Link} to={token ? "/user" : "/login"} onClick={()=>setShowCard(false)} className="p-2"><i className='bx bx-user'></i></Nav.Link>
             <Nav.Link as={Link} to="/purchases" className="p-2"><i className='bx bx-box' ></i></Nav.Link>
             <Nav.Link onClick={() => verifyUser()} className="p-2" ><i className='bx bx-cart'></i></Nav.Link>
           </Nav>

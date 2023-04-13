@@ -68,7 +68,9 @@ const Login = () => {
       </Form>
         </>
         }
-        <span>{showNewUser ? "Don't have an account?" : "Already have an account?"}</span><span onClick={()=>setShowNewUser(!showNewUser)}>{showNewUser ? "Log in" : "Sign up"}</span>
+        <div>
+          <span>{showNewUser ? "Don't have an account?" : "Already have an account?"}</span><span className="btn btn-link" onClick={()=>setShowNewUser(!showNewUser)}>{showNewUser ? "Log in" : "Sign up"}</span>
+        </div>
     </div>
   );
 };

@@ -63,7 +63,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <Container className="pt-5 container__detail">
+    <Container className="container__detail">
       <BackHome page={product.title} />
       <Row className="pt-5">
         <Col xs={6} md={6}>

@@ -27,7 +27,13 @@ export const addCarThunk = (product) => dispatch => {
     
     axios.post( `https://e-commerce-api-v2.academlo.tech/api/v1/cart`, product, getConfig() )
     .then(()=>{
-        Swal.fire('Agregado al Carrito')
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Added to Cart',
+            showConfirmButton: false,
+            timer: 1000
+        })
     })
     .catch(error=>console.log(error))
 }

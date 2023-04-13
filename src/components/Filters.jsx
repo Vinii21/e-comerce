@@ -11,7 +11,7 @@ import {
   filterCategoriesThunk,
   filterPriceThunk,
 } from "../store/slices/products.slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Filters({ setShowAsideFilter, showAsideFilter }) {
   const dispatch = useDispatch();
@@ -48,10 +48,9 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
         ></i>
       </div>
       <Row className=" aside-price d-flex justify-content-center align-items-center flex-column">
-        <h3 className="pt-3">
-          Price{" "}
+        <h3 style={{cursor:"pointer"}} className="pt-3" onClick={() => showFilter("price")}>
+          Price
           <i
-            onClick={() => showFilter("price")}
             className="bx bx-chevron-down"
           ></i>
         </h3>
@@ -90,8 +89,6 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
               } else {
                 Swal.fire("El min no debería ser mayor que el max") 
               }
-              setMin("");
-              setMax("");
             }}
           >
             Filter Price
@@ -99,10 +96,9 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
         </Form>
       </Row>
       <Row className="py-3 aside-categories d-flex justify-content-center align-items-center flex-column">
-        <h3>
-          Categories{" "}
+        <h3 style={{cursor:"pointer"}} onClick={() => showFilter("buttons")}>
+          Categories
           <i
-            onClick={() => showFilter("buttons")}
             className="bx bx-chevron-down"
           ></i>
         </h3>
@@ -118,7 +114,11 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
             >
               <Button
                 className="btn__aside"
-                onClick={() => dispatch(filterCategoriesThunk(category.id))}
+                onClick={() => {
+                  dispatch(filterCategoriesThunk(category.id))
+                  setMin("");
+                  setMax("");
+                }}
               >
                 {category.name}
               </Button>

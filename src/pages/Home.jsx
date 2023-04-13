@@ -27,6 +27,8 @@ const Home = () => {
 
   const products = useSelector((state) => state.products);
 
+  const token = localStorage.getItem("token")
+
   let mediaqueryList = window.matchMedia("(min-width: 900px)");
   
   setInterval(() => {
@@ -36,17 +38,33 @@ const Home = () => {
   },2000);
 
   const addCar = (idProduct) => {
-    if (cars.length === 0) {
-      dispatch(addCarThunk({ quantity: 1, productId: idProduct }));
-    } else {
-      const index = cars.filter(
-        (car) => parseInt(car.product.id) === parseInt(idProduct)
-      );
-      if (index.length === 0) {
+    if(token){
+      if (cars.length === 0) {
         dispatch(addCarThunk({ quantity: 1, productId: idProduct }));
       } else {
-        Swal.fire("Este producto ya está en el carrito");
+        const index = cars.filter(
+          (car) => parseInt(car.product.id) === parseInt(idProduct)
+        );
+        if (index.length === 0) {
+          dispatch(addCarThunk({ quantity: 1, productId: idProduct }));
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'This product is already added in the Cart',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        }
       }
+    } else {
+      Swal.fire({
+        position: 'top-center',
+        icon: 'warning',
+        title: 'You must login to continue',
+        showConfirmButton: false,
+        timer: 2000
+    })
     }
   };
 
@@ -88,6 +106,7 @@ const Home = () => {
                 aria-describedby="basic-addon2"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                className="bg-dark"
               />
               <Button
                 variant="outline-primary"
@@ -98,7 +117,7 @@ const Home = () => {
               </Button>
             </InputGroup>
             <span
-              className="btn__filter"
+              className="btn__filter btn"
               onClick={() => setShowAsideFilter(!showAsideFilter)}
             >
               Mostrar Filtros<i className="bx bx-filter-alt"></i>

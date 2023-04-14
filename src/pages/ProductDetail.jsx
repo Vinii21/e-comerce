@@ -44,7 +44,13 @@ const ProductDetail = () => {
       if(index.length === 0){
         dispatch(addCarThunk( { quantity: count, productId: idProduct }));
       }else{
-        Swal.fire('Este producto ya está en el carrito')
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'This product is already added in the Cart',
+          showConfirmButton: false,
+          timer: 2000
+      })
       }
   }
 

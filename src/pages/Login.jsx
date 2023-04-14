@@ -30,7 +30,7 @@ const Login = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Usuario no existe!",
+          text: "Username does not exist!",
         });
         console.error(error);
       });

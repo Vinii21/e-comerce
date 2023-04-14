@@ -41,7 +41,7 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
   return (
     <Container className="w-100">
       <div className="aside__head">
-        <h3>Filtros</h3>
+        <h3>Filters</h3>
         <i
           onClick={() => setShowAsideFilter(!showAsideFilter)}
           className="bx bxs-x-circle bxs-aside"

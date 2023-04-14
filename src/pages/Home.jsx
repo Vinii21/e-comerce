@@ -92,8 +92,8 @@ const Home = () => {
         {
           products.length === 0 ?
           <div className="d-flex justify-content-center align-items-center flex-column" style={{ minHeight:"100vh" }}>
-            <h6>No hay productos para mostrar</h6>
-            <button onClick={()=>dispatch(getProductsThunk())} className="btn btn-dark">Cargar todos los productos</button>
+            <h6>There are no products to display.</h6>
+            <button onClick={()=>dispatch(getProductsThunk())} className="btn btn-dark">Load all products</button>
           </div>
           :
           <>
@@ -101,7 +101,7 @@ const Home = () => {
           <Col>
             <InputGroup className="mb-3">
               <Form.Control
-                placeholder="Buscar productos"
+                placeholder="Search products..."
                 aria-label="Products Name"
                 aria-describedby="basic-addon2"
                 value={inputValue}

@@ -115,7 +115,7 @@ const ProductDetail = () => {
             </div>
           </Col> 
       </Row>
-      <h2 className="mt-5 pt-5">Recomendados</h2>
+      <h2 className="mt-5 pt-5">Recommended</h2>
 
       <Row xs={1} md={2} lg={3} className="py-1 justify-content-md-center">
         {products.map((product) => {

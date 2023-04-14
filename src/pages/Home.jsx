@@ -106,7 +106,7 @@ const Home = () => {
                 aria-describedby="basic-addon2"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="bg-dark"
+                className="bg-dark text-white"
               />
               <Button
                 variant="outline-primary"

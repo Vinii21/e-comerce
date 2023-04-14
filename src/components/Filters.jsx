@@ -87,7 +87,7 @@ export default function Filters({ setShowAsideFilter, showAsideFilter }) {
                 dispatch(filterPriceThunk(min, max));
                 setShowAsideFilter(!showAsideFilter);
               } else {
-                Swal.fire("El min no debería ser mayor que el max") 
+                Swal.fire("The min should not be greater than the max") 
               }
             }}
           >
